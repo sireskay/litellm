@@ -169,17 +169,17 @@ except Exception as e:
     except Exception as e:
         pass
 
-ui_link = f"/ui/"
-ui_message = (
-    f"👉 [```LiteLLM Admin Panel on /ui```]({ui_link}). Create, Edit Keys with SSO"
-)
+# ui_link = f"/ui/"
+# ui_message = (
+#     f"👉 [```LiteLLM Admin Panel on /ui```]({ui_link}). Create, Edit Keys with SSO"
+# )
 
-_docs_url = None if os.getenv("NO_DOCS", "False") == "True" else "/"
+# _docs_url = None if os.getenv("NO_DOCS", "False") == "True" else "/"
 
 app = FastAPI(
-    docs_url=_docs_url,
-    title="LiteLLM API",
-    description=f"Proxy Server to call 100+ LLMs in the OpenAI format\n\n{ui_message}",
+    docs_url=None,
+    title="GenAI API",
+    description=f"GenAI API - LLM Proxy Server",
     version=version,
     root_path=os.environ.get(
         "SERVER_ROOT_PATH", ""
@@ -9016,7 +9016,7 @@ async def cache_flushall():
 
 @router.get("/", dependencies=[Depends(user_api_key_auth)])
 async def home(request: Request):
-    return "LiteLLM: RUNNING"
+    return "MCP GenAI API Endpoint is Runing"
 
 
 @router.get("/routes", dependencies=[Depends(user_api_key_auth)])
